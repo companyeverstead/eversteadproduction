@@ -11767,7 +11767,7 @@ fieldset:disabled .btn {
   }
 }
 
-/*# sourceMappingURL=bootstrap.css.map */
+
 /* //bootstrap */
 
 /* css style */
@@ -18087,12 +18087,12 @@ li {
 }
 
 @font-face {
-  font-family: 'Font Awesome 5 Brands';
+  font-family: "Font Awesome 5 Brands";
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url("../webfonts/fa-brands-400.eot");
-  src: url("../webfonts/fa-brands-400.eot?#iefix") format("embedded-opentype"), url("../webfonts/fa-brands-400.woff2") format("woff2"), url("../webfonts/fa-brands-400.woff") format("woff"), url("../webfonts/fa-brands-400.ttf") format("truetype"), url("../webfonts/fa-brands-400.svg#fontawesome") format("svg");
+  src: url("../webfonts/fa-brands-400.woff2") format("woff2");
+}
 }
 
 .fab {
@@ -18101,12 +18101,11 @@ li {
 }
 
 @font-face {
-  font-family: 'Font Awesome 5 Free';
+  font-family: "Font Awesome 5 Free";
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url("../webfonts/fa-regular-400.eot");
-  src: url("../webfonts/fa-regular-400.eot?#iefix") format("embedded-opentype"), url("../webfonts/fa-regular-400.woff2") format("woff2"), url("../webfonts/fa-regular-400.woff") format("woff"), url("../webfonts/fa-regular-400.ttf") format("truetype"), url("../webfonts/fa-regular-400.svg#fontawesome") format("svg");
+  src: url("../webfonts/fa-regular-400.woff2") format("woff2");
 }
 
 .far {
@@ -18115,12 +18114,11 @@ li {
 }
 
 @font-face {
-  font-family: 'Font Awesome 5 Free';
+  font-family: "Font Awesome 5 Free";
   font-style: normal;
   font-weight: 900;
   font-display: block;
-  src: url("../webfonts/fa-solid-900.eot");
-  src: url("../webfonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("../webfonts/fa-solid-900.woff2") format("woff2"), url("../webfonts/fa-solid-900.woff") format("woff"), url("../webfonts/fa-solid-900.ttf") format("truetype"), url("../webfonts/fa-solid-900.svg#fontawesome") format("svg");
+  src: url("../webfonts/fa-solid-900.woff2") format("woff2");
 }
 
 .fa,
@@ -19597,15 +19595,12 @@ h4.number {
 }
 
 .w3l-homeblock3 .top-pic1 {
-  background: url(../images/img-bg1.jpg) no-repeat 0px 0px;
 }
 
 .w3l-homeblock3 .top-pic2 {
-  background: url(../images/img-bg2.jpg) no-repeat 0px 0px;
 }
 
 .w3l-homeblock3 .top-pic3 {
-  background: url(../images/img-bg3.jpg) no-repeat 0px 0px;
 }
 
 .w3l-homeblock3 .top-pic1,
@@ -20701,7 +20696,7 @@ h4.inner-text-title {
 
 /* content block */
 .w3l-content1 {
-  background: url(../images/banner3.jpg) no-repeat center;
+  background: url(../images/banner1.jpg) no-repeat center;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -21573,7 +21568,7 @@ span.nav-arrow-label i {
 
 /* error page */
 .error-page {
-  background: url(../images/inner-banner.jpg) no-repeat center;
+  background: url(../images/inner-banner.png) no-repeat center;
   background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
