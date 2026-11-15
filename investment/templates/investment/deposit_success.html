@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit Confirmation</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .wallet-address {
+            background: #f1f1f1;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .wallet-address:hover {
+            background: #e9e9e9;
+        }
+
+
+        .dashboard_btn{
+                        font-size:20px;
+                        line-height: 16.78px;
+                        font-weight: 500;
+                        border-radius: 4px;
+                        padding: 10px 10px;
+                        color: #ffffff;
+                        /* background-color: #2D60FF; */
+                        background: linear-gradient(135deg, #eb252f 0%, #a832a3 50%, #610606 100%) !important;
+                        cursor: pointer;
+                        border: none;
+                        margin-top: 6px;
+                  }
+
+
+        .copy_btn{
+                        font-size:20px;
+                        line-height: 16.78px;
+                        font-weight: 500;
+                        border-radius: 4px;
+                        padding: 10px 5px;
+                        color: #ffffff;
+                        /* background-color: #2D60FF; */
+                        background: linear-gradient(135deg, #eb252f 0%, #a832a3 50%, #610606 100%) !important;
+                        cursor: pointer;
+                        border: none;
+                        margin-top: 6px;
+                  }
+        
+        
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Content -->
+  
+    <style>
+.fas.fa-circle-check {
+  animation: successPop 0.6s ease-in-out;
+}
+
+@keyframes successPop {
+  0% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+</style>
+
+        
+<div class="tradingview-widget-container">
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+  {
+  "symbols": [
+    {
+      "proName": "FOREXCOM:SPXUSD",
+      "title": "S&P 500 Index"
+    },
+    {
+      "proName": "FOREXCOM:NSXUSD",
+      "title": "US 100 Cash CFD"
+    },
+    {
+      "proName": "FX_IDC:EURUSD",
+      "title": "EUR to USD"
+    },
+    {
+      "proName": "BITSTAMP:BTCUSD",
+      "title": "Bitcoin"
+    },
+    {
+      "proName": "BITSTAMP:ETHUSD",
+      "title": "Ethereum"
+    }
+  ],
+  "showSymbolLogo": true,
+  "isTransparent": false,
+  "displayMode": "adaptive",
+  "colorTheme": "light",
+  "locale": "en"
+}
+  </script>
+</div>
+  <!-- TradingView Ticker Widget -->
+<div class="tradingview-widget-container">
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js">
+  {
+    "symbols": [
+      {
+        "proName": "BITSTAMP:BTCUSD",
+        "title": "Bitcoin"
+      },
+      {
+        "proName": "BITSTAMP:ETHUSD",
+        "title": "Ethereum"
+      },
+      {
+        "proName": "BINANCE:DOGEUSD",
+        "title": "Dogecoin"
+      }
+    ],
+    "colorTheme": "dark",      <!-- Choose between "light" or "dark" themes -->
+    "isTransparent": false,   <!-- Set to true if you want a transparent background -->
+    "showSymbolLogo": true,   <!-- Show logos for each symbol -->
+    "locale": "en"            <!-- Locale for language (can be changed to other languages like "es" for Spanish) -->
+  }
+  </script>
+</div>
+
+<!--   
+<h2 class="text-center mt-5 mb-5 m-auto" 
+    style="color: #eb252f !important ;">
+    EversteadInvest
+</h2> -->
+ 
+    <div class="container mt-5">
+    <div class="card shadow-lg p-4">
+        <div class="text-center">
+
+            <!-- Success Icon -->
+            <i class="fas fa-circle-check text-success"
+               style="font-size: 65px; margin-bottom: 15px; filter: drop-shadow(0 0 6px rgba(25,135,84,0.4));"></i>
+
+            <h2 class="mb-4 text-success">
+                <i class="bi bi-clock" style="font-size: 1.5rem; margin-right: 8px;"></i>
+                Complete your Deposit
+            </h2>
+
+            <p class="lead">
+                Hi <strong><b>{{ user_name|capfirst }}</b></strong>,
+                A deposit of <strong class="text-success">
+                    <b><span class="text-muted text-success">$</span>{{ deposit_amount }}</b>
+                </strong> has been successfully placed.
+            </p>
+
+            <p>Kindly copy the address below and complete the transfer using your exchange/crypto wallet.</p>
+            <p class="text-muted">Transaction Fee : <b>0.00</b></p>
+
+            <!-- Countdown -->
+            <div class="countdown-box">
+                <p class="expiry-text">Expires: <b id="countdown-text">01:00:00</b></p>
+            </div>
+        </div>
+
+        <!-- Wallet Address Section -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <h3 class="card-title">Wallet Address:</h3>
+                <div class="input-group mb-3">
+                    <input type="text" id="walletAddress" class="form-control" value="{{ wallet_address }}" readonly>
+                    <button class="btn copy_btn" onclick="copyWalletAddress()">
+                        <i class="fas fa-copy"></i> Copy
+                    </button>
+                </div>
+                <p class="text-muted">Click the "Copy" button to copy the wallet address.</p>
+            </div>
+        </div>
+
+        <!-- Wallet Name Section -->
+        <div class="card mt-4">
+            <div class="card-body text-center">
+                <h3 class="card-title">Wallet Name:</h3>
+                <p class="lead">{{ wallet_name }}</p>
+            </div>
+        </div>
+
+        <!-- QR Code Section (Added Here) -->
+        <div class="card mt-4">
+            <div class="card-body text-center">
+                <h3 class="card-title mb-3">Scan QR Code to Deposit</h3>
+
+                <img 
+                    src="{{ wallet.icon.url }}" 
+                    alt="{{ wallet.name }} QR Code"
+                    class="img-fluid"
+                    style="
+                        width: 200px; 
+                        height: 200px; 
+                        max-width: 90%; 
+                        object-fit: contain; 
+                        border: 1px solid #ddd; 
+                        border-radius: 12px;
+                        padding: 8px;
+                        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                    "
+                />
+
+                <p class="text-muted mt-2">Scan this QR code using your wallet app to pay instantly.</p>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+       <div class="mt-4 text-center">
+    <p class="text-muted">
+        Please complete the transaction on your exchange platform.
+    </p>
+
+    <a href="{% url 'userprofile:dashboard' %}" 
+       class="dashboard-btn-responsive">
+        <i class="fas fa-arrow-left"></i> Return to Your Dashboard
+    </a>
+</div>
+
+<style>
+    .dashboard-btn-responsive {
+        display: inline-block;
+        padding: 12px 20px;
+        font-size: 16px;
+         background: linear-gradient(135deg, #eb252f 0%, #a832a3 50%, #610606 100%) !important;
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: 0.25s ease;
+        width: auto;
+    }
+
+    /* Hover */
+    .dashboard-btn-responsive:hover {
+        background-color: #084298;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    /* 🌟 FULL MOBILE RESPONSIVENESS */
+    @media (max-width: 575px) {
+        .dashboard-btn-responsive {
+            width: 90%;           /* full width on mobile */
+            font-size: 18px;      /* larger text for mobile */
+            padding: 14px 0;
+            text-align: center;
+        }
+    }
+</style>
+
+
+    </div>
+</div>
+
+
+    <!-- Footer Section -->
+    <footer>
+       <p>&copy; 2011 EversteadInvest. All rights reserved.</p>
+<p>Contact us at <a href="mailto:support@eversteadinvest.com">support@eversteadinvest.com</a></p>
+
+    </footer>
+
+    <!-- JavaScript for Copying Wallet Address -->
+    <script>
+        function copyWalletAddress() {
+            // Get the wallet address input
+            const walletAddress = document.getElementById("walletAddress");
+            walletAddress.select(); // Select the text
+            walletAddress.setSelectionRange(0, 99999); // For mobile devices
+            document.execCommand("copy"); // Copy the text
+
+            // Optional: Show a success message
+            alert("Wallet address copied to clipboard: " + walletAddress.value);
+        }
+    </script>
+
+
+<script>
+  // Function to format the time as hh:mm:ss
+  function formatTime(seconds) {
+      const hours = Math.floor(seconds / 3600);
+      const minutes = Math.floor((seconds % 3600) / 60);
+      const remainingSeconds = seconds % 60;
+      return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+  }
+
+  // Starting time in seconds (1 hour = 3600 seconds)
+  let totalTime = 3600;
+
+  // Function to update the countdown
+  function updateCountdown() {
+      if (totalTime <= 0) {
+          clearInterval(countdownInterval);
+          document.getElementById('countdown-text').textContent = "00:00:00";
+          return;
+      }
+
+      totalTime--;
+      const timeString = formatTime(totalTime);
+      document.getElementById('countdown-text').textContent = timeString;
+  }
+
+  // Update the countdown every second
+  const countdownInterval = setInterval(updateCountdown, 1000);
+</script>
+
+    <!-- Bootstrap JS (Optional, if you need Bootstrap functionality) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- 🌍 Auto Detect + Remember + Translate -->
+<div id="google_translate_element" style="display:none;"></div>
+
+<script>
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      autoDisplay: false
+    }, 'google_translate_element');
+
+    // Delay to ensure translate dropdown is injected
+    setTimeout(() => {
+      const supportedLangs = ['en','es','fr','de','it','pt','ru','zh-CN','ja','ar'];
+
+      // Try to load saved language from localStorage
+      let userLang = localStorage.getItem('userLang');
+
+      // If not saved, detect from browser
+      if (!userLang) {
+        userLang = (navigator.language || navigator.userLanguage || 'en').split('-')[0];
+        if (!supportedLangs.includes(userLang)) userLang = 'en';
+      }
+
+      // Automatically translate if not English
+      const select = document.querySelector('select.goog-te-combo');
+      if (select && userLang !== 'en') {
+        select.value = userLang;
+        select.dispatchEvent(new Event('change'));
+      }
+
+      // Watch for manual language changes and save them
+      if (select) {
+        select.addEventListener('change', () => {
+          localStorage.setItem('userLang', select.value);
+        });
+      }
+    }, 1000);
+  }
+</script>
+
+<!-- Google Translate script -->
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

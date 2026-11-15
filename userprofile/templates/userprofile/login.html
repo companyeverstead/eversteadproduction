@@ -1,0 +1,657 @@
+{% load widget_tweaks %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In | EversteadInvest</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #f52029;
+            --light-bg: #f8f9fa;
+            --light-text: #333;
+            --light-card: #ffffff;
+            --dark-bg: #121212;
+            --dark-text: #f8f9fa;
+            --dark-card: #1e1e1e;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--light-text);
+            transition: var(--transition);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        /* Header with Logo */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 100;
+            background-color: var(--light-bg);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        body.dark-mode .header {
+            background-color: var(--dark-bg);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, var(--primary-color), #ff6b6b);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .logo-text {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        body.dark-mode .logo-text {
+            color: #ff6b6b;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            margin-top: 70px;
+        }
+
+        .login-card {
+            background-color: var(--light-card);
+            border-radius: 12px;
+            padding: 30px 25px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        body.dark-mode .login-card {
+            background-color: var(--dark-card);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .login-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: var(--light-text);
+            font-size: 0.95rem;
+        }
+
+        body.dark-mode .form-group label {
+            color: var(--dark-text);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            background-color: var(--light-card);
+            color: var(--light-text);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        body.dark-mode .form-control {
+            background-color: var(--dark-card);
+            border-color: #444;
+            color: var(--dark-text);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(245, 32, 41, 0.2);
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        body.dark-mode .toggle-password {
+            color: #aaa;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 14px;
+            border-radius: 8px;
+            border: none;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            animation: blink 2s ease-in-out infinite;
+            margin-top: 10px;
+        }
+
+        .btn-login:hover {
+            background-color: #d81b23;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 32, 41, 0.3);
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+                box-shadow: 0 0 10px rgba(245, 32, 41, 0.5);
+            }
+            50% {
+                opacity: 0.9;
+                box-shadow: 0 0 20px rgba(245, 32, 41, 0.8);
+            }
+        }
+
+        .login-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .login-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+            flex: 1;
+            min-width: 140px;
+            text-align: center;
+        }
+
+        .login-links a:hover {
+            text-decoration: underline;
+        }
+
+        .theme-toggle {
+            background: none;
+            color: inherit;
+            border: none;
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Google Translate Styles */
+        #custom_translate_wrapper {
+            position: relative;
+        }
+
+        #custom_lang_icon {
+            font-size: 1.2rem;
+            color: #f5202a;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            transition: var(--transition);
+        }
+
+        #custom_lang_icon:hover {
+            transform: scale(1.1);
+        }
+
+        #custom_google_translate {
+            display: none;
+            position: absolute;
+            top: 42px;
+            right: 0;
+            background: #fff;
+            border-radius: 6px;
+            padding: 5px 10px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+            z-index: 9999;
+            transition: all 0.3s ease-in-out;
+        }
+
+        body.dark-mode #custom_google_translate {
+            background: #1e1e1e !important;
+            color: #fff !important;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        body.dark-mode #custom_lang_icon {
+            color: #ff6b6b !important;
+        }
+
+        .error-message {
+            color: #f52029;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at center, #0a0a0a 15%, #000 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 9999;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .preloader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .preloader-icon {
+            font-size: 60px;
+            color: #eb252f;
+            animation: linePulse 1.8s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px #eb252f);
+        }
+
+        .preloader-text {
+            color: #eb252f;
+            font-family: "Poppins", sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px #eb252f, 0 0 20px #ff4a5c;
+            animation: glowText 2s infinite alternate;
+        }
+
+        @keyframes linePulse {
+            0% { transform: scale(1) translateY(0); opacity: 0.9; }
+            50% { transform: scale(1.15) translateY(-4px); opacity: 1; }
+            100% { transform: scale(1) translateY(0); opacity: 0.9; }
+        }
+
+        @keyframes glowText {
+            0% { opacity: 0.7; text-shadow: 0 0 10px #eb252f; }
+            100% { opacity: 1; text-shadow: 0 0 25px #ff4a5c; }
+        }
+
+        body.loaded #preloader {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 12px 15px;
+            }
+            
+            .logo {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+            
+            .logo-text {
+                font-size: 1.1rem;
+            }
+            
+            .header-controls {
+                gap: 10px;
+            }
+            
+            .login-container {
+                margin-top: 60px;
+            }
+            
+            .login-card {
+                padding: 25px 20px;
+            }
+            
+            .login-header h1 {
+                font-size: 1.7rem;
+            }
+            
+            .form-control {
+                padding: 10px 12px;
+                font-size: 0.95rem;
+            }
+            
+            .btn-login {
+                padding: 12px;
+                font-size: 0.95rem;
+            }
+            
+            .theme-toggle {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            #custom_lang_icon {
+                width: 32px;
+                height: 32px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .login-links {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .header-controls {
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <i class="fa fa-line-chart preloader-icon" aria-hidden="true"></i>
+            <h2 class="preloader-text">EversteadInvest</h2>
+        </div>
+    </div>
+
+    <!-- Header with Logo -->
+    <header class="header">
+        <div class="logo-container">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="{% static 'images/logo.png' %}" alt="EversteadInvest Logo" style="height:60px; max-width:100%; object-fit:contain;">
+            </a>
+        </div>
+
+        <!-- Google Translate Widget - Centered in nav -->
+        <div class="header-controls">
+            <div id="custom_translate_wrapper">
+                <div id="custom_lang_icon" onclick="toggleCustomTranslate()">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div id="custom_google_translate"></div>
+            </div>
+
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <h1>Log In</h1>
+                <p>Login to your account</p>
+            </div>
+
+            <form method="POST" action="{% url 'userprofile:login' %}">
+                {% csrf_token %}
+
+                {% if form.non_field_errors %}
+                    <div class="error-message">
+                        {% for error in form.non_field_errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <div class="form-group">
+                    <label for="{{ form.username.id_for_label }}">Username</label>
+                    {{ form.username|add_class:"form-control"|attr:"placeholder:Enter your username" }}
+                    {% if form.username.errors %}
+                        <span class="error-message">{{ form.username.errors.0 }}</span>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.password.id_for_label }}">Password</label>
+                    <div class="password-container">
+                        {{ form.password|add_class:"form-control"|attr:"placeholder:Enter your password"|attr:"id:id_password" }}
+                        <button type="button" class="toggle-password" data-target="id_password">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    {% if form.password.errors %}
+                        <span class="error-message">{{ form.password.errors.0 }}</span>
+                    {% endif %}
+                </div>
+
+                <button type="submit" class="btn-login"style=" background: linear-gradient(135deg, #eb252f 0%, #a832a3 50%, #610606 100%);">Sign In</button>
+
+                <div class="login-links">
+                    <a href="{% url 'userprofile:register' %}">Don't have Wallet? Register</a>
+                    <a href="{% url 'userprofile:reset-password' %}">Forgot Password?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            document.body.classList.add("loaded");
+        });
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+
+        // Load saved theme preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        });
+
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Password toggle functionality
+        document.querySelectorAll('.toggle-password').forEach(function(button) {
+            button.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                const passwordInput = document.getElementById(targetId);
+                const icon = this.querySelector('i');
+                
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    passwordInput.type = 'password';
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            });
+        });
+
+        // Google Translate Functions
+        function toggleCustomTranslate() {
+            const el = document.getElementById("custom_google_translate");
+            if (el.style.display === "block") {
+                el.style.opacity = 0;
+                setTimeout(() => el.style.display = "none", 300);
+            } else {
+                el.style.display = "block";
+                setTimeout(() => el.style.opacity = 1, 10);
+            }
+        }
+
+        function customGoogleTranslateInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,es,fr,de,it,pt,ru,zh-CN,ja,ar',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'custom_google_translate');
+            
+            // Close translate dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                const translateWrapper = document.getElementById('custom_translate_wrapper');
+                const translateDropdown = document.getElementById('custom_google_translate');
+                const translateIcon = document.getElementById('custom_lang_icon');
+                
+                if (!translateWrapper.contains(event.target) && translateDropdown.style.display === 'block') {
+                    translateDropdown.style.opacity = 0;
+                    setTimeout(() => translateDropdown.style.display = 'none', 300);
+                }
+            });
+        }
+
+        // Handle viewport changes for mobile
+        function handleResize() {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+
+        window.addEventListener('resize', handleResize);
+        handleResize();
+    </script>
+
+    <!-- Google Translate Script -->
+    <script src="//translate.google.com/translate_a/element.js?cb=customGoogleTranslateInit"></script>
+    <!-- 🌍 Auto Detect + Remember + Translate -->
+<div id="google_translate_element" style="display:none;"></div>
+
+<script>
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      autoDisplay: false
+    }, 'google_translate_element');
+
+    // Delay to ensure translate dropdown is injected
+    setTimeout(() => {
+      const supportedLangs = ['en','es','fr','de','it','pt','ru','zh-CN','ja','ar'];
+
+      // Try to load saved language from localStorage
+      let userLang = localStorage.getItem('userLang');
+
+      // If not saved, detect from browser
+      if (!userLang) {
+        userLang = (navigator.language || navigator.userLanguage || 'en').split('-')[0];
+        if (!supportedLangs.includes(userLang)) userLang = 'en';
+      }
+
+      // Automatically translate if not English
+      const select = document.querySelector('select.goog-te-combo');
+      if (select && userLang !== 'en') {
+        select.value = userLang;
+        select.dispatchEvent(new Event('change'));
+      }
+
+      // Watch for manual language changes and save them
+      if (select) {
+        select.addEventListener('change', () => {
+          localStorage.setItem('userLang', select.value);
+        });
+      }
+    }, 1000);
+  }
+</script>
+
+<!-- Google Translate script -->
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
