@@ -1,0 +1,403 @@
+```html
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deposit Approved - EversteadInvest</title>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #f8faff 0%, #f0f4ff 100%);
+      margin: 0;
+      padding: 20px;
+      color: #2d3748;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 30px auto;
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #f52029 0%, #d81b23 100%);
+      padding: 30px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #f52029, #ff6b6b, #f52029);
+    }
+
+    .logo-container {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border-radius: 12px;
+    }
+
+    .header img {
+      max-width: 180px;
+      height: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    .content {
+      padding: 40px;
+    }
+
+    .success-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: 2px solid #bbf7d0;
+      background: #f0fff4;
+      color: #16a34a;
+      font-size: 38px;
+      line-height: 72px;
+      text-align: center;
+      margin: 0 auto 20px;
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      font-weight: 700;
+      color: #1a202c;
+      text-align: center;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #718096;
+      font-size: 15px;
+      margin-bottom: 28px;
+    }
+
+    .subtitle strong {
+      color: #16a34a;
+    }
+
+    .content p {
+      color: #4a5568;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .content p strong {
+      color: #1a202c;
+    }
+
+    .details-box {
+      background: linear-gradient(135deg, #fff5f5 0%, #fffafa 100%);
+      border-left: 4px solid #f52029;
+      border-radius: 10px;
+      padding: 22px;
+      margin: 25px 0;
+      border-top: 1px solid #fed7d7;
+      border-right: 1px solid #fed7d7;
+      border-bottom: 1px solid #fed7d7;
+    }
+
+    .details-box h3 {
+      margin: 0 0 16px;
+      color: #d81b23;
+      font-size: 18px;
+      border-bottom: 1px solid #fed7d7;
+      padding-bottom: 10px;
+    }
+
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 9px 0;
+      border-bottom: 1px solid #edf2f7;
+      font-size: 14px;
+    }
+
+    .detail-row:last-child {
+      border-bottom: none;
+    }
+
+    .detail-label {
+      color: #718096;
+    }
+
+    .detail-value {
+      color: #1a202c;
+      font-weight: 600;
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+
+    .detail-value.amount {
+      color: #16a34a;
+      font-size: 18px;
+    }
+
+    .detail-value.approved {
+      color: #16a34a;
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, #f0fff4 0%, #dcfce7 100%);
+      border: 1px solid #bbf7d0;
+      border-radius: 10px;
+      padding: 18px;
+      margin: 25px 0;
+      text-align: center;
+    }
+
+    .highlight-box p {
+      margin: 0;
+      color: #166534;
+      font-weight: 600;
+    }
+
+    .button-container {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .button {
+      display: inline-block;
+      background: linear-gradient(135deg, #eb252f 0%, #a832a3 50%, #610606 100%);
+      color: #ffffff !important;
+      text-decoration: none;
+      padding: 15px 38px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 15px;
+      box-shadow: 0 4px 15px rgba(245, 32, 41, 0.3);
+    }
+
+    .security-notice {
+      background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+      border: 1px solid #fed7d7;
+      border-radius: 10px;
+      padding: 18px;
+      margin: 25px 0;
+      color: #4a5568;
+      font-size: 14px;
+    }
+
+    .security-notice strong {
+      color: #d81b23;
+    }
+
+    .security-notice a {
+      color: #d81b23;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer {
+      background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+      padding: 30px 20px;
+      text-align: center;
+      color: #a0aec0;
+      font-size: 13px;
+    }
+
+    .footer p {
+      margin: 8px 0;
+    }
+
+    .footer a {
+      color: #feb2b2;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .security-note {
+      background: #2d3748;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      font-size: 12px;
+      color: #cbd5e0;
+    }
+
+    .footer .tagline {
+      color: #feb2b2;
+      font-weight: 600;
+      margin-top: 15px;
+      font-size: 12px;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .container {
+        margin: 10px;
+      }
+
+      .content {
+        padding: 25px 20px;
+      }
+
+      h2 {
+        font-size: 23px;
+      }
+
+      .detail-row {
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      .detail-value {
+        text-align: left;
+      }
+
+      .button {
+        padding: 14px 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- EVERSTEADINVEST HEADER -->
+    <div class="header">
+      <div class="logo-container">
+        <img
+          src="https://freeimage.host/i/Ky0e8mu"
+          alt="EversteadInvest Logo"
+          style="max-width: 180px; height: auto;"
+        >
+      </div>
+    </div>
+
+    <!-- EMAIL CONTENT -->
+    <div class="content">
+
+      <div class="success-icon">✓</div>
+
+      <h2>Deposit Approved</h2>
+
+      <p class="subtitle">
+        Your deposit has been <strong>successfully approved</strong>
+      </p>
+
+      <p>
+        Hello <strong style="color: #f52029;">{{ username }}</strong>,
+      </p>
+
+      <p>
+        Great news! Your deposit has been
+        <strong style="color: #16a34a;">successfully approved</strong>
+        and added to your EversteadInvest account balance.
+      </p>
+
+      <div class="highlight-box">
+        <p>
+          Your deposit is confirmed. Your updated account balance is now
+          available in your dashboard.
+        </p>
+      </div>
+
+      <!-- DEPOSIT DETAILS -->
+      <div class="details-box">
+        <h3>Deposit Details</h3>
+
+        <div class="detail-row">
+          <span class="detail-label">Amount Approved:</span>
+          <span class="detail-value amount">${{ amount }}</span>
+        </div>
+
+        <div class="detail-row">
+          <span class="detail-label">Transaction ID:</span>
+          <span class="detail-value">{{ transaction_id }}</span>
+        </div>
+
+        <div class="detail-row">
+          <span class="detail-label">Status:</span>
+          <span class="detail-value approved">✓ Approved</span>
+        </div>
+
+        <div class="detail-row">
+          <span class="detail-label">Date Approved:</span>
+          <span class="detail-value">{{ approval_date }}</span>
+        </div>
+      </div>
+
+      <p>
+        Thank you for choosing EversteadInvest. We appreciate your trust
+        and look forward to supporting your financial journey.
+      </p>
+
+      <!-- DASHBOARD BUTTON -->
+      <div class="button-container">
+        <a
+          href="https://www.eversteadinvest.com/userprofile/dashboard/"
+          class="button"
+        >
+          View Your Dashboard →
+        </a>
+      </div>
+
+      <!-- SECURITY NOTICE -->
+      <div class="security-notice">
+        <strong>🔒 Security Notice:</strong>
+        If you did not authorize this deposit, please contact our support
+        team immediately at
+        <a href="mailto:support@eversteadinvest.com">
+          support@eversteadinvest.com
+        </a>.
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+
+      <p>
+        <strong>EversteadInvest</strong> — Building Sustainable Wealth
+        Through Smart Investments
+      </p>
+
+      <p style="font-size: 12px; color: #a0aec0;">
+        This is an automated message. Please do not reply.
+      </p>
+
+      <p style="font-size: 12px; color: #a0aec0;">
+        &copy; {% now "Y" %} EversteadInvest. All rights reserved.
+      </p>
+
+      <p>
+        <a href="https://www.eversteadinvest.com">Visit Our Website</a> |
+        <a href="mailto:support@eversteadinvest.com">Contact Support</a> |
+        <a href="https://www.eversteadinvest.com/privacy">Privacy Policy</a>
+      </p>
+
+      <div class="security-note">
+        🔒 This email contains confidential information intended solely
+        for the recipient. Unauthorized access or disclosure is prohibited.
+      </div>
+
+      <p class="tagline">
+        ✦ Security • Transparency • Innovation ✦
+      </p>
+
+    </div>
+
+  </div>
+</body>
+</html>
+```

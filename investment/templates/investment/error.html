@@ -1,159 +1,358 @@
+
 <!-- templates/investment/error.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Error | WealthNetTrader</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error | EversteadInvest</title>
 
-  <!-- Bootstrap & Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
-  <style>
-    body {
-      background: #f4f6fb;
-      font-family: 'Poppins', sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-    .error-card {
-      background: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      text-align: center;
-      padding: 40px 30px;
-      max-width: 450px;
-      width: 100%;
-      animation: fadeIn 0.4s ease-in-out;
-    }
+        body {
+            background: linear-gradient(135deg, #f8faff 0%, #f0f4ff 100%);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            color: #4a5568;
+        }
 
-    .error-icon {
-      font-size: 4rem;
-      color: #ff4b5c;
-      background: rgba(255, 75, 92, 0.1);
-      width: 90px;
-      height: 90px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      margin: 0 auto 20px;
-      animation: pulse 1.5s infinite;
-    }
+        .error-card {
+            background: #ffffff;
+            border-radius: 18px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 15px 45px rgba(26, 32, 44, 0.09);
+            text-align: center;
+            padding: 40px 35px;
+            max-width: 480px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-in-out;
+        }
 
-    h2 {
-background: linear-gradient(135deg, #f59e0b, #fbbf24, #f87171);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          font-weight: bold;
-          font-size: 1.25rem;     
-           -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
+        /* EversteadInvest Red Accent */
+        .error-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(135deg, #f52029 0%, #d81b23 100%);
+        }
 
-    p {
-      color: #555;
-      font-size: 0.95rem;
-    }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    .dashboard_btn {
-      font-size: 16px;
-      font-weight: 500;
-      border-radius: 8px;
-      padding: 10px 16px;
-      color: #ffffff;
-    background: linear-gradient(135deg, #eb252f 0%, #a832a3 50%, #610606 100%) !important;
-      cursor: pointer;
-      border: none;
-      margin-top: 20px;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      display: inline-block;
-    }
+        /* EversteadInvest Logo */
+        .logo-container {
+            margin-bottom: 30px;
+            padding-bottom: 22px;
+            border-bottom: 1px solid #edf0f5;
+        }
 
-    .dashboard_btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(78, 70, 222, 0.3);
-    }
+        .logo-container img {
+            width: 190px;
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
 
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.08); opacity: 0.9; }
-      100% { transform: scale(1); opacity: 1; }
-    }
+        /* Error Icon */
+        .error-icon {
+            font-size: 3.3rem;
+            color: #dc2626;
+            background: #fff5f5;
+            width: 85px;
+            height: 85px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 22px;
+            border: 2px solid #fed7d7;
+            animation: pulse 2s ease-in-out infinite;
+        }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        h2 {
+            color: #d81b23;
+            font-weight: 700;
+            font-size: 1.55rem;
+            margin-bottom: 14px;
+            letter-spacing: -0.02em;
+        }
+
+        .error-message {
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 18px;
+            overflow-wrap: anywhere;
+        }
+
+        .support-box {
+            background: #f8faff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .support-link {
+            color: #718096;
+            font-size: 0.9rem;
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        .support-link a {
+            color: #d81b23;
+            text-decoration: none;
+            font-weight: 700;
+            overflow-wrap: anywhere;
+        }
+
+        .support-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Dashboard Button */
+        .dashboard_btn {
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: 8px;
+            padding: 13px 30px;
+            color: #ffffff;
+            background: linear-gradient(135deg, #f52029 0%, #d81b23 100%);
+            cursor: pointer;
+            border: none;
+            margin-top: 25px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            letter-spacing: 0.03em;
+            box-shadow: 0 4px 15px rgba(245, 32, 41, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .dashboard_btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(245, 32, 41, 0.25);
+            color: #ffffff;
+        }
+
+        /* Footer */
+        .card-footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #edf0f5;
+            color: #718096;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .card-footer .tagline {
+            color: #d81b23;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+        }
+
+        .card-footer a {
+            color: #d81b23;
+            text-decoration: none;
+        }
+
+        @media (max-width: 480px) {
+            .error-card {
+                padding: 30px 20px;
+            }
+
+            .error-icon {
+                width: 72px;
+                height: 72px;
+                font-size: 2.8rem;
+            }
+
+            h2 {
+                font-size: 1.35rem;
+            }
+
+            .dashboard_btn {
+                padding: 12px 24px;
+                font-size: 14px;
+                width: 100%;
+            }
+
+            .logo-container img {
+                width: 160px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .error-card {
+                padding: 25px 16px;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            .error-message {
+                font-size: 0.88rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <div class="error-card">
-    <div class="error-icon">
-      <i class="fas fa-exclamation-triangle"></i>
+
+    <div class="error-card">
+
+        <!-- EversteadInvest Logo -->
+        <div class="logo-container">
+            <img src="https://freeimage.host/i/Ky0e8mu"
+                 alt="EversteadInvest Logo">
+        </div>
+
+        <!-- Error Icon -->
+        <div class="error-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+        </div>
+
+        <h2>Something Went Wrong</h2>
+
+        <p class="error-message">
+            {{ error_message|default:"An unexpected error occurred. Please try again later." }}
+        </p>
+
+        <!-- Support Information -->
+        <div class="support-box">
+            <p class="support-link">
+                If this issue persists, our support team is ready to help.
+                Please contact
+                <a href="mailto:support@eversteadinvest.com">
+                    support@eversteadinvest.com
+                </a>.
+            </p>
+        </div>
+
+        <!-- Dashboard Button -->
+        <a href="{% url 'userprofile:dashboard' %}" class="dashboard_btn">
+            <i class="fas fa-arrow-left"></i>
+            Return to Dashboard
+        </a>
+
+        <!-- Footer -->
+        <div class="card-footer">
+
+            <p style="margin:0 0 5px; color:#4a5568; font-weight:600;">
+                EversteadInvest — Building the Future of Digital Finance
+            </p>
+
+            <p class="tagline" style="margin:5px 0;">
+                Security &bull; Transparency &bull; Innovation
+            </p>
+
+            <p style="margin:8px 0 0;">
+                &copy; <span id="current-year"></span>
+                EversteadInvest. All rights reserved.
+            </p>
+
+            <p style="margin:8px 0 0;">
+                <a href="https://eversteadinvest.com">
+                    Visit Our Website
+                </a>
+            </p>
+
+        </div>
+
     </div>
 
-    <h2>Something Went Wrong</h2>
-    <p>{{ error_message|default:"An unexpected error occurred. Please try again later." }}</p>
-    <p class="text-muted mt-2">If this issue persists, please contact <a href="mailto:support@eversteadinvest.com"><strong>support@eversteadinvest.com</strong></a>
-.</p>
+    <!-- Google Translate -->
+    <div id="google_translate_element" style="display:none;"></div>
 
-    <a href="{% url 'userprofile:dashboard' %}" class="dashboard_btn mt-3">
-      <i class="fas fa-arrow-left me-2"></i> Return to Dashboard
-    </a>
-  </div>
+    <script>
+        document.getElementById("current-year").textContent =
+            new Date().getFullYear();
 
-  <!-- 🌍 Auto Detect + Remember + Translate -->
-<div id="google_translate_element" style="display:none;"></div>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                autoDisplay: false
+            }, 'google_translate_element');
 
-<script>
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'en',
-      autoDisplay: false
-    }, 'google_translate_element');
+            setTimeout(() => {
+                const supportedLangs = [
+                    'en', 'es', 'fr', 'de', 'it',
+                    'pt', 'ru', 'zh-CN', 'ja', 'ar'
+                ];
 
-    // Delay to ensure translate dropdown is injected
-    setTimeout(() => {
-      const supportedLangs = ['en','es','fr','de','it','pt','ru','zh-CN','ja','ar'];
+                let userLang = localStorage.getItem('userLang');
 
-      // Try to load saved language from localStorage
-      let userLang = localStorage.getItem('userLang');
+                if (!userLang) {
+                    userLang = (
+                        navigator.language ||
+                        navigator.userLanguage ||
+                        'en'
+                    ).split('-')[0];
 
-      // If not saved, detect from browser
-      if (!userLang) {
-        userLang = (navigator.language || navigator.userLanguage || 'en').split('-')[0];
-        if (!supportedLangs.includes(userLang)) userLang = 'en';
-      }
+                    if (!supportedLangs.includes(userLang)) {
+                        userLang = 'en';
+                    }
+                }
 
-      // Automatically translate if not English
-      const select = document.querySelector('select.goog-te-combo');
-      if (select && userLang !== 'en') {
-        select.value = userLang;
-        select.dispatchEvent(new Event('change'));
-      }
+                const select = document.querySelector('select.goog-te-combo');
 
-      // Watch for manual language changes and save them
-      if (select) {
-        select.addEventListener('change', () => {
-          localStorage.setItem('userLang', select.value);
-        });
-      }
-    }, 1000);
-  }
-</script>
+                if (select && userLang !== 'en') {
+                    select.value = userLang;
+                    select.dispatchEvent(new Event('change'));
+                }
 
-<!-- Google Translate script -->
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                if (select) {
+                    select.addEventListener('change', () => {
+                        localStorage.setItem('userLang', select.value);
+                    });
+                }
+
+            }, 1000);
+        }
+    </script>
+
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
-
 </html>

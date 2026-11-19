@@ -1,0 +1,311 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Withdrawal Approved - Admin Notification | EversteadInvest</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f0f4ff;
+      font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+      color: #4a5568;
+    }
+
+    .wrapper {
+      max-width: 650px;
+      margin: 40px auto;
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1px solid #e2e8f0;
+      overflow: hidden;
+      box-shadow: 0 12px 35px rgba(26, 32, 44, 0.08);
+    }
+
+    .top-accent {
+      height: 5px;
+      background: linear-gradient(135deg, #f52029 0%, #d81b23 100%);
+    }
+
+    .header {
+      background: #ffffff;
+      padding: 30px 20px 25px;
+      text-align: center;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .logo {
+      width: 190px;
+      max-width: 80%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .content {
+      padding: 35px 35px 40px;
+      line-height: 1.7;
+    }
+
+    h2 {
+      color: #1a202c;
+      font-size: 24px;
+      text-align: center;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #718096;
+      font-size: 15px;
+      margin-top: -8px;
+      margin-bottom: 25px;
+    }
+
+    p {
+      font-size: 15px;
+      color: #4a5568;
+      margin-bottom: 18px;
+      line-height: 1.8;
+    }
+
+    p strong {
+      color: #1a202c;
+    }
+
+    .info-box {
+      background: #f8faff;
+      border-left: 4px solid #f52029;
+      padding: 20px 24px;
+      border-radius: 10px;
+      margin: 25px 0;
+      border-top: 1px solid #e2e8f0;
+      border-right: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .info-box p {
+      margin: 8px 0;
+      color: #1a202c;
+      font-size: 15px;
+      word-break: break-word;
+    }
+
+    .info-box .label {
+      color: #718096;
+      font-weight: 400;
+    }
+
+    .info-box .value {
+      color: #1a202c;
+      font-weight: 600;
+    }
+
+    .info-box .amount {
+      color: #16a34a;
+      font-weight: 700;
+      font-size: 17px;
+    }
+
+    .admin-note {
+      background: #fff5f5;
+      border: 1px solid #fed7d7;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin: 20px 0;
+      color: #4a5568;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .admin-note strong {
+      color: #d81b23;
+    }
+
+    .btn-area {
+      text-align: center;
+      margin: 30px 0 25px;
+    }
+
+    .button {
+      background: linear-gradient(135deg, #f52029 0%, #d81b23 100%);
+      padding: 14px 38px;
+      border-radius: 8px;
+      color: #ffffff !important;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      letter-spacing: 0.03em;
+    }
+
+    .footer {
+      background: #f8faff;
+      padding: 25px 20px 30px;
+      text-align: center;
+      font-size: 13px;
+      color: #718096;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .footer p {
+      color: #718096;
+    }
+
+    .footer a {
+      color: #d81b23;
+      text-decoration: none;
+    }
+
+    .footer .tagline {
+      color: #d81b23;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      margin-top: 6px;
+    }
+
+    .footer .tagline span {
+      color: #718096;
+      font-weight: 400;
+    }
+
+    @media (max-width: 600px) {
+      .content { padding: 25px 20px; }
+      .logo { width: 165px; }
+      h2 { font-size: 20px; }
+      .info-box { padding: 16px 18px; }
+      .button { padding: 12px 28px; font-size: 14px; }
+    }
+
+    @media (max-width: 400px) {
+      .content { padding: 20px 14px; }
+      .header { padding: 20px 15px; }
+      .logo { width: 145px; }
+      h2 { font-size: 18px; }
+      .info-box p { font-size: 14px; }
+      .button { padding: 10px 22px; font-size: 13px; }
+      .admin-note { font-size: 13px; padding: 12px 14px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="wrapper">
+
+    <div class="top-accent"></div>
+
+    <!-- EVERSTEADINVEST HEADER -->
+    <div class="header">
+      <img
+        src="https://freeimage.host/i/Ky0e8mu"
+        alt="EversteadInvest Logo"
+        class="logo"
+      >
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+      <!-- ADMIN NOTIFICATION ICON -->
+      <table cellpadding="0" cellspacing="0" border="0" style="margin:0 auto 20px;">
+        <tr>
+          <td align="center" style="width:64px; height:64px; border-radius:50%; border:2px solid #bbf7d0; background:#f0fdf4;">
+            <span style="font-size:28px; color:#16a34a;">&#10003;</span>
+          </td>
+        </tr>
+      </table>
+
+      <h2>Withdrawal Approved</h2>
+      <p class="subtitle">Admin Notification — Withdrawal Request Approved</p>
+
+      <p>
+        A user's withdrawal request has been
+        <strong style="color:#16a34a;">approved</strong>.
+        Below are the transaction details:
+      </p>
+
+      <div class="info-box">
+        <p style="font-weight:700; color:#d81b23; font-size:16px; margin-bottom:10px;">
+          Withdrawal Details
+        </p>
+
+        <p>
+          <span class="label">👤 User:</span>
+          <span class="value">{{ username }}</span>
+        </p>
+
+        <p>
+          <span class="label">💰 Amount:</span>
+          <span class="amount">${{ amount }}</span>
+        </p>
+
+        <p>
+          <span class="label">📝 Transaction ID:</span>
+          <span class="value">{{ transaction_id }}</span>
+        </p>
+
+        <p>
+          <span class="label">📌 Status:</span>
+          <span style="color:#16a34a; font-weight:700;">&#10003; Approved</span>
+        </p>
+
+        <p>
+          <span class="label">📅 Date Approved:</span>
+          <span class="value">{{ approval_date }}</span>
+        </p>
+      </div>
+
+      <div class="admin-note">
+        <strong>🔔 Admin Notification:</strong>
+        This is an automated notification to help you keep track of all withdrawals processed through the EversteadInvest platform.
+      </div>
+
+      <div class="btn-area">
+        <a href="https://www.eversteadinvest.com/admin/" class="button">
+          View Admin Dashboard &rarr;
+        </a>
+      </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <p style="margin:0 0 4px; color:#1a202c; font-weight:600;">
+        EversteadInvest — Building Your Financial Future
+      </p>
+
+      <p style="margin:4px 0; font-size:12px;">
+        This is an automated notification — please do not reply.
+      </p>
+
+      <p style="margin:8px 0 0; font-size:12px;">
+        Need assistance?
+        <a href="mailto:support@eversteadinvest.com">Contact Support</a>
+      </p>
+
+      <p style="margin:8px 0 0; font-size:12px;">
+        <a href="https://eversteadinvest.com">eversteadinvest.com</a>
+      </p>
+
+      <p style="margin:8px 0 0; color:#718096; font-size:12px;">
+        &copy; 2026 EversteadInvest. All rights reserved.
+      </p>
+
+      <p class="tagline">
+        ✦ <span>Security • Transparency • Innovation</span> ✦
+      </p>
+    </div>
+
+  </div>
+
+</body>
+</html>
+

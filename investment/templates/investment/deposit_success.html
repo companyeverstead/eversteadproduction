@@ -1,388 +1,517 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deposit Confirmation</title>
-    <!-- Bootstrap CSS -->
+    <title>Deposit Confirmation - EversteadInvest</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
+            background: linear-gradient(135deg, #f8faff 0%, #f0f4ff 100%);
+            font-family: "Segoe UI", Arial, sans-serif;
+            color: #4a5568;
+            min-height: 100vh;
+            padding: 20px 0;
         }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 20px;
+
+        .container-custom {
+            max-width: 650px;
+            margin: 25px auto;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 18px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 15px 45px rgba(26, 32, 44, 0.09);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container-custom::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(135deg, #f52029 0%, #d81b23 100%);
+        }
+
+        .logo-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #edf0f5;
+        }
+
+        .logo-header img {
+            width: 190px;
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        h2 {
+            font-weight: 700;
+            color: #d81b23;
+            font-size: 26px;
+            letter-spacing: -0.02em;
+        }
+
+        .success-icon {
+            font-size: 68px;
+            color: #22c55e;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .lead {
+            color: #4a5568;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .lead .highlight {
+            color: #d81b23;
+            font-weight: 700;
+        }
+
+        .amount-highlight {
+            color: #16a34a;
+            font-weight: 700;
+            font-size: 21px;
+        }
+
+        .text-muted {
+            color: #718096 !important;
+            font-size: 14px;
+        }
+
+        .countdown-box {
+            background: #fff5f5;
+            border: 1px solid #fed7d7;
+            border-radius: 10px;
+            padding: 12px 20px;
+            display: inline-block;
+        }
+
+        #countdown-text {
+            font-size: 22px;
+            font-weight: 700;
+            color: #d81b23;
+            margin-left: 6px;
+        }
+
+        .wallet-box,
+        .qr-box {
+            background: #f8faff;
+            padding: 20px 24px;
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .wallet-box h4,
+        .qr-box h4 {
+            color: #d81b23;
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: 0.02em;
+        }
+
+        input {
+            background: #ffffff !important;
+            border: 1px solid #cbd5e0 !important;
+            color: #1a202c !important;
+            border-radius: 8px !important;
+            padding: 12px 16px !important;
+            font-size: 14px !important;
+        }
+
+        input:focus {
+            border-color: #f52029 !important;
+            box-shadow: 0 0 0 3px rgba(245, 32, 41, 0.1) !important;
+        }
+
+        .copy_btn {
+            background: linear-gradient(135deg, #f52029 0%, #d81b23 100%) !important;
+            color: #ffffff !important;
+            border: none;
+            padding: 10px 20px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .wallet-address {
-            background: #f1f1f1;
-            padding: 10px;
-            border-radius: 5px;
+            font-weight: 600;
             cursor: pointer;
         }
-        .wallet-address:hover {
-            background: #e9e9e9;
+
+        .copy_btn:hover {
+            opacity: 0.9;
         }
 
+        .btn-gradient {
+            display: inline-block;
+            background: linear-gradient(135deg, #f52029 0%, #d81b23 100%) !important;
+            border: none !important;
+            color: #ffffff !important;
+            font-weight: 700;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.03em;
+            box-shadow: 0 4px 15px rgba(245, 32, 41, 0.2);
+        }
 
-        .dashboard_btn{
-                        font-size:20px;
-                        line-height: 16.78px;
-                        font-weight: 500;
-                        border-radius: 4px;
-                        padding: 10px 10px;
-                        color: #ffffff;
-                        /* background-color: #2D60FF; */
-                        background: linear-gradient(135deg, #eb252f 0%, #a832a3 50%, #610606 100%) !important;
-                        cursor: pointer;
-                        border: none;
-                        margin-top: 6px;
-                  }
+        .btn-gradient:hover {
+            opacity: 0.9;
+            color: #ffffff;
+        }
 
+        .qr-box img {
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            background: #ffffff;
+            padding: 8px;
+        }
 
-        .copy_btn{
-                        font-size:20px;
-                        line-height: 16.78px;
-                        font-weight: 500;
-                        border-radius: 4px;
-                        padding: 10px 5px;
-                        color: #ffffff;
-                        /* background-color: #2D60FF; */
-                        background: linear-gradient(135deg, #eb252f 0%, #a832a3 50%, #610606 100%) !important;
-                        cursor: pointer;
-                        border: none;
-                        margin-top: 6px;
-                  }
-        
-        
+        .security-notice {
+            background: #fff8e6;
+            border: 1px solid #fce7b2;
+            border-radius: 10px;
+            padding: 14px;
+            color: #805b16;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+
         footer {
             text-align: center;
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #f8f9fa;
-            border-top: 1px solid #e9ecef;
+            color: #718096;
+            margin-top: 30px;
+            padding: 20px 0 10px;
+            border-top: 1px solid #edf0f5;
+            font-size: 13px;
+        }
+
+        footer .tagline {
+            color: #d81b23;
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 0.05em;
+            margin-top: 4px;
+        }
+
+        footer a {
+            color: #d81b23;
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+            .container-custom {
+                padding: 25px 20px;
+                margin: 15px;
+            }
+
+            .logo-header img {
+                width: 160px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            .success-icon {
+                font-size: 56px;
+            }
+
+            #countdown-text {
+                font-size: 18px;
+            }
+
+            .wallet-box,
+            .qr-box {
+                padding: 16px 18px;
+            }
+
+            .lead {
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .container-custom {
+                padding: 20px 14px;
+            }
+
+            .logo-header img {
+                width: 140px;
+            }
+
+            h2 {
+                font-size: 19px;
+            }
+
+            .success-icon {
+                font-size: 48px;
+            }
+
+            #countdown-text {
+                font-size: 16px;
+            }
+
+            input {
+                font-size: 12px !important;
+                padding: 10px 12px !important;
+            }
+
+            .copy_btn {
+                padding: 8px 14px;
+                font-size: 13px;
+            }
+
+            .btn-gradient {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
+
 <body>
 
+<div class="container container-custom">
+
+    <!-- EversteadInvest Logo -->
+    <div class="logo-header">
+        <img src="https://freeimage.host/i/Ky0e8mu"
+             alt="EversteadInvest Logo">
+    </div>
+
     <!-- Main Content -->
-  
-    <style>
-.fas.fa-circle-check {
-  animation: successPop 0.6s ease-in-out;
-}
+    <div class="text-center mb-4">
 
-@keyframes successPop {
-  0% {
-    transform: scale(0.2);
-    opacity: 0;
-  }
-  60% {
-    transform: scale(1.15);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-</style>
-
-        
-<div class="tradingview-widget-container">
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-  {
-  "symbols": [
-    {
-      "proName": "FOREXCOM:SPXUSD",
-      "title": "S&P 500 Index"
-    },
-    {
-      "proName": "FOREXCOM:NSXUSD",
-      "title": "US 100 Cash CFD"
-    },
-    {
-      "proName": "FX_IDC:EURUSD",
-      "title": "EUR to USD"
-    },
-    {
-      "proName": "BITSTAMP:BTCUSD",
-      "title": "Bitcoin"
-    },
-    {
-      "proName": "BITSTAMP:ETHUSD",
-      "title": "Ethereum"
-    }
-  ],
-  "showSymbolLogo": true,
-  "isTransparent": false,
-  "displayMode": "adaptive",
-  "colorTheme": "light",
-  "locale": "en"
-}
-  </script>
-</div>
-  <!-- TradingView Ticker Widget -->
-<div class="tradingview-widget-container">
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js">
-  {
-    "symbols": [
-      {
-        "proName": "BITSTAMP:BTCUSD",
-        "title": "Bitcoin"
-      },
-      {
-        "proName": "BITSTAMP:ETHUSD",
-        "title": "Ethereum"
-      },
-      {
-        "proName": "BINANCE:DOGEUSD",
-        "title": "Dogecoin"
-      }
-    ],
-    "colorTheme": "dark",      <!-- Choose between "light" or "dark" themes -->
-    "isTransparent": false,   <!-- Set to true if you want a transparent background -->
-    "showSymbolLogo": true,   <!-- Show logos for each symbol -->
-    "locale": "en"            <!-- Locale for language (can be changed to other languages like "es" for Spanish) -->
-  }
-  </script>
-</div>
-
-<!--   
-<h2 class="text-center mt-5 mb-5 m-auto" 
-    style="color: #eb252f !important ;">
-    EversteadInvest
-</h2> -->
- 
-    <div class="container mt-5">
-    <div class="card shadow-lg p-4">
-        <div class="text-center">
-
-            <!-- Success Icon -->
-            <i class="fas fa-circle-check text-success"
-               style="font-size: 65px; margin-bottom: 15px; filter: drop-shadow(0 0 6px rgba(25,135,84,0.4));"></i>
-
-            <h2 class="mb-4 text-success">
-                <i class="bi bi-clock" style="font-size: 1.5rem; margin-right: 8px;"></i>
-                Complete your Deposit
-            </h2>
-
-            <p class="lead">
-                Hi <strong><b>{{ user_name|capfirst }}</b></strong>,
-                A deposit of <strong class="text-success">
-                    <b><span class="text-muted text-success">$</span>{{ deposit_amount }}</b>
-                </strong> has been successfully placed.
-            </p>
-
-            <p>Kindly copy the address below and complete the transfer using your exchange/crypto wallet.</p>
-            <p class="text-muted">Transaction Fee : <b>0.00</b></p>
-
-            <!-- Countdown -->
-            <div class="countdown-box">
-                <p class="expiry-text">Expires: <b id="countdown-text">01:00:00</b></p>
-            </div>
+        <div class="success-icon">
+            <i class="fas fa-circle-check"></i>
         </div>
 
-        <!-- Wallet Address Section -->
-        <div class="card mt-4">
-            <div class="card-body">
-                <h3 class="card-title">Wallet Address:</h3>
-                <div class="input-group mb-3">
-                    <input type="text" id="walletAddress" class="form-control" value="{{ wallet_address }}" readonly>
-                    <button class="btn copy_btn" onclick="copyWalletAddress()">
-                        <i class="fas fa-copy"></i> Copy
-                    </button>
-                </div>
-                <p class="text-muted">Click the "Copy" button to copy the wallet address.</p>
-            </div>
+        <h2 class="mt-3">
+            <i class="bi bi-wallet2"></i> Deposit Initiated
+        </h2>
+
+        <p class="lead mt-3">
+            Hello <span class="highlight">{{ user_name|capfirst }}</span>,
+            your deposit of
+            <span class="amount-highlight">${{ deposit_amount }}</span>
+            is awaiting completion.
+        </p>
+
+        <p class="text-muted">
+            Please log in to your exchange wallet and send the exact amount
+            specified to your EversteadInvest wallet address below.
+            Verify the wallet address and network carefully before
+            completing the transaction.
+        </p>
+
+        <div class="countdown-box mt-3">
+            <span style="color:#718096; font-size:14px;">
+                <i class="fas fa-clock"></i> Expires in:
+            </span>
+            <span id="countdown-text">01:00:00</span>
         </div>
-
-        <!-- Wallet Name Section -->
-        <div class="card mt-4">
-            <div class="card-body text-center">
-                <h3 class="card-title">Wallet Name:</h3>
-                <p class="lead">{{ wallet_name }}</p>
-            </div>
-        </div>
-
-        <!-- QR Code Section (Added Here) -->
-        <div class="card mt-4">
-            <div class="card-body text-center">
-                <h3 class="card-title mb-3">Scan QR Code to Deposit</h3>
-
-                <img 
-                    src="{{ wallet.icon.url }}" 
-                    alt="{{ wallet.name }} QR Code"
-                    class="img-fluid"
-                    style="
-                        width: 200px; 
-                        height: 200px; 
-                        max-width: 90%; 
-                        object-fit: contain; 
-                        border: 1px solid #ddd; 
-                        border-radius: 12px;
-                        padding: 8px;
-                        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-                    "
-                />
-
-                <p class="text-muted mt-2">Scan this QR code using your wallet app to pay instantly.</p>
-            </div>
-        </div>
-
-        <!-- Instructions -->
-       <div class="mt-4 text-center">
-    <p class="text-muted">
-        Please complete the transaction on your exchange platform.
-    </p>
-
-    <a href="{% url 'userprofile:dashboard' %}" 
-       class="dashboard-btn-responsive">
-        <i class="fas fa-arrow-left"></i> Return to Your Dashboard
-    </a>
-</div>
-
-<style>
-    .dashboard-btn-responsive {
-        display: inline-block;
-        padding: 12px 20px;
-        font-size: 16px;
-         background: linear-gradient(135deg, #eb252f 0%, #a832a3 50%, #610606 100%) !important;
-        color: white;
-        border-radius: 8px;
-        text-decoration: none;
-        transition: 0.25s ease;
-        width: auto;
-    }
-
-    /* Hover */
-    .dashboard-btn-responsive:hover {
-        background-color: #084298;
-        color: #fff;
-        text-decoration: none;
-    }
-
-    /* 🌟 FULL MOBILE RESPONSIVENESS */
-    @media (max-width: 575px) {
-        .dashboard-btn-responsive {
-            width: 90%;           /* full width on mobile */
-            font-size: 18px;      /* larger text for mobile */
-            padding: 14px 0;
-            text-align: center;
-        }
-    }
-</style>
-
 
     </div>
-</div>
 
+    <!-- Wallet Address -->
+    <div class="wallet-box mt-4">
 
-    <!-- Footer Section -->
+        <h4>
+            <i class="fas fa-qrcode me-2"></i>
+            Wallet Address
+        </h4>
+
+        <div class="input-group mt-3">
+
+            <input type="text"
+                   id="walletAddress"
+                   value="{{ wallet_address }}"
+                   class="form-control"
+                   readonly>
+
+            <button type="button"
+                    class="copy_btn"
+                    onclick="copyWalletAddress()">
+                <i class="fas fa-copy me-1"></i> Copy
+            </button>
+
+        </div>
+
+        <small class="text-muted mt-2 d-block">
+            Click copy to avoid mistakes when entering the wallet address.
+        </small>
+
+    </div>
+
+    <!-- Wallet Network -->
+    <div class="wallet-box mt-4 text-center">
+
+        <h4>
+            <i class="fas fa-network-wired me-2"></i>
+            Wallet Network
+        </h4>
+
+        <p class="lead mt-2"
+           style="color:#1a202c; font-size:18px; font-weight:600;">
+            {{ wallet_name }}
+        </p>
+
+    </div>
+
+    <!-- QR Code -->
+    <div class="qr-box mt-4 text-center">
+
+        <h4>
+            <i class="fas fa-camera me-2"></i>
+            Scan to Pay
+        </h4>
+
+        <img src="{{ wallet.icon.url }}"
+             alt="Wallet payment QR code"
+             class="img-fluid mt-3"
+             style="width:200px;height:200px;object-fit:contain;">
+
+        <p class="text-muted mt-3" style="font-size:14px;">
+            Scan using your crypto wallet to complete payment.
+        </p>
+
+    </div>
+
+    <!-- Security Notice -->
+    <div class="security-notice">
+        <i class="fas fa-shield-alt me-2"></i>
+        <strong>Security Reminder:</strong>
+        Always verify the wallet address and selected network before
+        sending funds. Cryptocurrency transactions are generally
+        irreversible. Never send funds to an address you have not verified.
+    </div>
+
+    <!-- Dashboard Button -->
+    <div class="text-center mt-4">
+
+        <a href="{% url 'userprofile:dashboard' %}"
+           class="btn-gradient">
+            <i class="fas fa-arrow-left me-2"></i>
+            Back to Dashboard
+        </a>
+
+    </div>
+
+    <!-- Footer -->
     <footer>
-       <p>&copy; 2011 EversteadInvest. All rights reserved.</p>
-<p>Contact us at <a href="mailto:support@eversteadinvest.com">support@eversteadinvest.com</a></p>
+
+        <p style="margin:0 0 4px; color:#4a5568;">
+            EversteadInvest — Building the Future of Digital Finance
+        </p>
+
+        <p style="margin:4px 0; font-size:12px; color:#718096;">
+            &copy; <span id="current-year"></span>
+            EversteadInvest. All rights reserved.
+        </p>
+
+        <p class="tagline">
+            Security • Transparency • Innovation
+        </p>
+
+        <p style="margin-top:12px;">
+            Need assistance?
+            <a href="mailto:support@eversteadinvest.com">
+                Contact Support
+            </a>
+        </p>
+
+        <p style="font-size:11px; color:#a0aec0;">
+            <a href="https://eversteadinvest.com">Visit our website</a>
+        </p>
 
     </footer>
 
-    <!-- JavaScript for Copying Wallet Address -->
-    <script>
-        function copyWalletAddress() {
-            // Get the wallet address input
-            const walletAddress = document.getElementById("walletAddress");
-            walletAddress.select(); // Select the text
-            walletAddress.setSelectionRange(0, 99999); // For mobile devices
-            document.execCommand("copy"); // Copy the text
+</div>
 
-            // Optional: Show a success message
-            alert("Wallet address copied to clipboard: " + walletAddress.value);
+<script>
+    document.getElementById("current-year").textContent =
+        new Date().getFullYear();
+
+    function copyWalletAddress() {
+        const walletAddress = document.getElementById("walletAddress");
+        const btn = document.querySelector(".copy_btn");
+        const originalText = btn.innerHTML;
+
+        walletAddress.select();
+        walletAddress.setSelectionRange(0, 99999);
+
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(walletAddress.value)
+                .then(() => showCopySuccess(btn, originalText))
+                .catch(() => fallbackCopy(walletAddress, btn, originalText));
+        } else {
+            fallbackCopy(walletAddress, btn, originalText);
         }
-    </script>
+    }
 
+    function fallbackCopy(walletAddress, btn, originalText) {
+        try {
+            document.execCommand("copy");
+            showCopySuccess(btn, originalText);
+        } catch (error) {
+            btn.innerHTML = '<i class="fas fa-times me-1"></i> Copy failed';
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+            }, 2000);
+        }
+    }
 
-<script>
-  // Function to format the time as hh:mm:ss
-  function formatTime(seconds) {
-      const hours = Math.floor(seconds / 3600);
-      const minutes = Math.floor((seconds % 3600) / 60);
-      const remainingSeconds = seconds % 60;
-      return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
-  }
-
-  // Starting time in seconds (1 hour = 3600 seconds)
-  let totalTime = 3600;
-
-  // Function to update the countdown
-  function updateCountdown() {
-      if (totalTime <= 0) {
-          clearInterval(countdownInterval);
-          document.getElementById('countdown-text').textContent = "00:00:00";
-          return;
-      }
-
-      totalTime--;
-      const timeString = formatTime(totalTime);
-      document.getElementById('countdown-text').textContent = timeString;
-  }
-
-  // Update the countdown every second
-  const countdownInterval = setInterval(updateCountdown, 1000);
+    function showCopySuccess(btn, originalText) {
+        btn.innerHTML = '<i class="fas fa-check me-1"></i> Copied!';
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+        }, 2000);
+    }
 </script>
 
-    <!-- Bootstrap JS (Optional, if you need Bootstrap functionality) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- 🌍 Auto Detect + Remember + Translate -->
-<div id="google_translate_element" style="display:none;"></div>
-
+<!-- Countdown Timer -->
 <script>
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'en',
-      autoDisplay: false
-    }, 'google_translate_element');
+    let totalTime = 3600;
 
-    // Delay to ensure translate dropdown is injected
-    setTimeout(() => {
-      const supportedLangs = ['en','es','fr','de','it','pt','ru','zh-CN','ja','ar'];
+    function formatTime(seconds) {
+        const h = String(Math.floor(seconds / 3600)).padStart(2, "0");
+        const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, "0");
+        const s = String(seconds % 60).padStart(2, "0");
 
-      // Try to load saved language from localStorage
-      let userLang = localStorage.getItem('userLang');
+        return `${h}:${m}:${s}`;
+    }
 
-      // If not saved, detect from browser
-      if (!userLang) {
-        userLang = (navigator.language || navigator.userLanguage || 'en').split('-')[0];
-        if (!supportedLangs.includes(userLang)) userLang = 'en';
-      }
+    function updateCountdown() {
+        const countdown = document.getElementById("countdown-text");
 
-      // Automatically translate if not English
-      const select = document.querySelector('select.goog-te-combo');
-      if (select && userLang !== 'en') {
-        select.value = userLang;
-        select.dispatchEvent(new Event('change'));
-      }
+        if (totalTime <= 0) {
+            countdown.textContent = "00:00:00";
+            countdown.style.color = "#dc2626";
+            return;
+        }
 
-      // Watch for manual language changes and save them
-      if (select) {
-        select.addEventListener('change', () => {
-          localStorage.setItem('userLang', select.value);
-        });
-      }
-    }, 1000);
-  }
+        totalTime--;
+        countdown.textContent = formatTime(totalTime);
+    }
+
+    setInterval(updateCountdown, 1000);
 </script>
-
-<!-- Google Translate script -->
-<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
+```

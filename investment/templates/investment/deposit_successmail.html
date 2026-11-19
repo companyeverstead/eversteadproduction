@@ -1,0 +1,263 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit Request Received - EversteadInvest</title>
+</head>
+
+<body style="margin:0; padding:20px 0; font-family:'Segoe UI', Arial, sans-serif; background-color:#f0f4ff; color:#4a5568; line-height:1.7;">
+
+<table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f0f4ff">
+    <tr>
+        <td align="center" style="padding:15px;">
+
+            <table width="650" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" style="width:100%; max-width:650px; border-radius:16px; overflow:hidden; border:1px solid #e2e8f0; box-shadow:0 15px 45px rgba(26,32,44,0.09);">
+
+                <!-- RED TOP ACCENT -->
+                <tr>
+                    <td height="5" bgcolor="#f52029" style="height:5px; background:linear-gradient(135deg,#f52029 0%,#d81b23 100%); font-size:0; line-height:5px;">
+                        &nbsp;
+                    </td>
+                </tr>
+
+                <!-- HEADER -->
+                <tr>
+                    <td align="center" bgcolor="#ffffff" style="padding:30px 20px 25px; border-bottom:1px solid #edf0f5;">
+
+                        <img src="https://freeimage.host/i/Ky0e8mu"
+                             alt="EversteadInvest Logo"
+                             width="190"
+                             style="display:block; width:190px; max-width:100%; height:auto; border:0;">
+
+                    </td>
+                </tr>
+
+                <!-- CONTENT -->
+                <tr>
+                    <td style="padding:35px 38px; color:#4a5568;">
+
+                        <!-- PENDING ICON -->
+                        <table cellpadding="0" cellspacing="0" border="0" align="center" style="margin:0 auto 20px;">
+                            <tr>
+                                <td align="center" width="72" height="72" bgcolor="#fff8e6" style="width:72px; height:72px; border-radius:50%; border:2px solid #fce7b2;">
+                                    <span style="font-size:34px; color:#d97706;">&#9203;</span>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <h2 style="margin:0 0 8px; font-size:26px; font-weight:700; color:#d81b23; text-align:center; letter-spacing:-0.02em;">
+                            Deposit Request Received
+                        </h2>
+
+                        <p style="text-align:center; color:#718096; font-size:15px; margin:0 0 25px;">
+                            Your deposit request is being processed.
+                        </p>
+
+                        <p style="color:#1a202c; font-size:15px;">
+                            Hello <strong style="color:#d81b23;">{{ username }}</strong>,
+                        </p>
+
+                        <p style="color:#4a5568; font-size:15px;">
+                            We have successfully received your deposit request. Your transaction is currently
+                            <strong style="color:#d97706;">pending review</strong>.
+                            Our team will verify the transaction and update your account accordingly.
+                        </p>
+
+                        <!-- DEPOSIT DETAILS -->
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f8faff; border:1px solid #e2e8f0; border-left:4px solid #f52029; border-radius:10px; margin:25px 0;">
+
+                            <tr>
+                                <td style="padding:22px 24px;">
+
+                                    <p style="margin:0 0 15px; font-size:17px; font-weight:700; color:#d81b23;">
+                                        Deposit Details
+                                    </p>
+
+                                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+
+                                        <tr>
+                                            <td style="padding:9px 0; color:#718096; font-size:14px; border-bottom:1px solid #e2e8f0;">
+                                                Plan:
+                                            </td>
+                                            <td align="right" style="padding:9px 0; color:#1a202c; font-weight:600; font-size:14px; border-bottom:1px solid #e2e8f0;">
+                                                {{ plan_name }}
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td style="padding:9px 0; color:#718096; font-size:14px; border-bottom:1px solid #e2e8f0;">
+                                                Amount:
+                                            </td>
+                                            <td align="right" style="padding:9px 0; color:#16a34a; font-weight:700; font-size:18px; border-bottom:1px solid #e2e8f0;">
+                                                ${{ amount }}
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td style="padding:9px 0; color:#718096; font-size:14px; border-bottom:1px solid #e2e8f0;">
+                                                Coin:
+                                            </td>
+                                            <td align="right" style="padding:9px 0; color:#1a202c; font-weight:600; font-size:14px; border-bottom:1px solid #e2e8f0;">
+                                                {{ coin_name }}
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td colspan="2" style="padding:9px 0; color:#718096; font-size:14px; border-bottom:1px solid #e2e8f0;">
+                                                Wallet Address:
+                                                <div style="margin-top:5px; color:#1a202c; font-weight:600; font-size:13px; word-break:break-all; overflow-wrap:anywhere;">
+                                                    {{ wallet_address }}
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td style="padding:9px 0; color:#718096; font-size:14px; border-bottom:1px solid #e2e8f0;">
+                                                Payment Date:
+                                            </td>
+                                            <td align="right" style="padding:9px 0; color:#1a202c; font-weight:600; font-size:14px; border-bottom:1px solid #e2e8f0;">
+                                                {{ payment_date }}
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td style="padding:12px 0 4px; color:#718096; font-size:14px;">
+                                                Status:
+                                            </td>
+                                            <td align="right" style="padding:12px 0 4px; color:#d97706; font-weight:700; font-size:14px;">
+                                                &#9203; Pending Review
+                                            </td>
+                                        </tr>
+
+                                    </table>
+
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- PROCESSING NOTICE -->
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#fff8e6; border:1px solid #fce7b2; border-radius:10px; margin:20px 0;">
+
+                            <tr>
+                                <td style="padding:15px 18px;">
+
+                                    <p style="margin:0; color:#805b16; font-size:14px; line-height:1.7;">
+                                        <strong style="color:#b7791f;">&#9203; Processing Notice:</strong>
+                                        Your deposit is currently being reviewed for security and compliance purposes.
+                                        You will receive a confirmation email once your deposit has been approved.
+                                    </p>
+
+                                </td>
+                            </tr>
+                        </table>
+
+                        <p style="color:#4a5568; font-size:15px; line-height:1.8;">
+                            Your funds will be added to your account balance once your deposit has been approved.
+                            Thank you for choosing <strong style="color:#d81b23;">EversteadInvest</strong> —
+                            building the future of digital finance.
+                        </p>
+
+                        <!-- DASHBOARD BUTTON -->
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:30px 0 25px;">
+                            <tr>
+                                <td align="center">
+
+                                    <a href="https://www.eversteadinvest.com/userprofile/dashboard/"
+                                       style="background:linear-gradient(135deg,#f52029 0%,#d81b23 100%); color:#ffffff; text-decoration:none; padding:14px 38px; border-radius:8px; display:inline-block; font-weight:700; font-size:15px; letter-spacing:0.03em;">
+                                        View Dashboard &rarr;
+                                    </a>
+
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- WHAT HAPPENS NEXT -->
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f8faff; border:1px solid #e2e8f0; border-radius:10px; margin:20px 0 10px;">
+
+                            <tr>
+                                <td style="padding:20px 22px;">
+
+                                    <p style="margin:0 0 10px; font-size:15px; font-weight:700; color:#1a202c;">
+                                        &#128204; What Happens Next?
+                                    </p>
+
+                                    <ol style="margin:5px 0 0; padding-left:20px; color:#4a5568; font-size:13px; line-height:1.9;">
+                                        <li>Our team reviews your deposit for security verification.</li>
+                                        <li>Once approved, your funds will be credited to your account.</li>
+                                        <li>You will receive a confirmation email with the approval details.</li>
+                                        <li>Your updated balance will be available in your account.</li>
+                                    </ol>
+
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- SECURITY NOTICE -->
+                        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#fff5f5; border:1px solid #fed7d7; border-radius:10px; margin:25px 0 10px;">
+
+                            <tr>
+                                <td style="padding:15px 18px; color:#4a5568; font-size:14px; line-height:1.7;">
+
+                                    <strong style="color:#d81b23;">&#128274; Security Notice:</strong>
+                                    If you did not initiate this deposit request, please contact our support team immediately at
+                                    <a href="mailto:support@eversteadinvest.com" style="color:#d81b23; text-decoration:underline; font-weight:600;">
+                                        support@eversteadinvest.com
+                                    </a>.
+
+                                </td>
+                            </tr>
+                        </table>
+
+                    </td>
+                </tr>
+
+                <!-- DIVIDER -->
+                <tr>
+                    <td style="padding:0 38px;">
+                        <hr style="border:0; border-top:1px solid #edf0f5; margin:0;">
+                    </td>
+                </tr>
+
+                <!-- FOOTER -->
+                <tr>
+                    <td bgcolor="#1a202c" style="text-align:center; padding:28px 20px 32px; color:#a0aec0; font-size:13px;">
+
+                        <p style="margin:0 0 5px; color:#ffffff; font-weight:600;">
+                            EversteadInvest — Building the Future of Digital Finance
+                        </p>
+
+                        <p style="margin:5px 0; font-size:12px; color:#a0aec0;">
+                            This is an automated message. Please do not reply.
+                        </p>
+
+                        <p style="margin:8px 0 0; color:#a0aec0; font-size:12px;">
+                            &copy; {% now "Y" %} EversteadInvest. All rights reserved.
+                        </p>
+
+                        <p style="margin:8px 0 0; font-size:11px; color:#f87171; letter-spacing:0.05em;">
+                            Security &bull; Transparency &bull; Innovation
+                        </p>
+
+                        <p style="margin:12px 0 0; font-size:12px;">
+                            <a href="https://eversteadinvest.com" style="color:#f87171; text-decoration:none;">
+                                Visit Our Website
+                            </a>
+                            &nbsp; | &nbsp;
+                            <a href="mailto:support@eversteadinvest.com" style="color:#f87171; text-decoration:none;">
+                                Contact Support
+                            </a>
+                        </p>
+
+                    </td>
+                </tr>
+
+            </table>
+
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

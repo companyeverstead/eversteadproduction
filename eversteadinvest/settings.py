@@ -371,7 +371,6 @@ TEMPLATES = [
         },
     },
 ]
-
 # ============================================================
 # DATABASE
 # ============================================================
@@ -382,6 +381,7 @@ DATABASES = {
     "default": dj_database_url.config(
         default=DATABASE_URL or f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
         conn_max_age=600,
+        conn_health_checks=True,
     )
 }
 
