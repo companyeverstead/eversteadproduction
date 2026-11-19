@@ -1,3 +1,4 @@
+
 import os
 
 os.environ.setdefault(
@@ -9,7 +10,6 @@ import django
 django.setup()
 
 from django.contrib.auth import get_user_model
-from django.core.management import call_command
 
 User = get_user_model()
 
@@ -17,15 +17,41 @@ username = os.getenv(
     f"DJANGO_SUPERUSER_{User.USERNAME_FIELD.upper()}"
 )
 
+password = os.getenv("DJANGO_SUPERUSER_PASSWORD")
+
 if not username:
-    raise ValueError(
-        f"Missing environment variable: "
-        f"DJANGO_SUPERUSER_{User.USERNAME_FIELD.upper()}"
+    raise ValueError("Superuser username is missing!")
+
+if not password:
+    raise ValueError("Superuser password is missing!")
+
+user_data = {
+    User.USERNAME_FIELD: username
+}
+
+for field in User.REQUIRED_FIELDS:
+    value = os.getenv(
+        f"DJANGO_SUPERUSER_{field.upper()}"
     )
 
-if User.objects.filter(**{User.USERNAME_FIELD: username}).exists():
+    if not value:
+        raise ValueError(
+            f"Missing environment variable: "
+            f"DJANGO_SUPERUSER_{field.upper()}"
+        )
+
+    user_data[field] = value
+
+if User.objects.filter(
+    **{User.USERNAME_FIELD: username}
+).exists():
+
     print("Superuser already exists. No changes made.")
+
 else:
-    print("Creating Django superuser...")
-    call_command("createsuperuser", interactive=False)
+    User.objects.create_superuser(
+        **user_data,
+        password=password
+    )
+
     print("Superuser created successfully!")
