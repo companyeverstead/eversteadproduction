@@ -73,6 +73,175 @@
 </div>
 <!-- TradingView Widget END -->
 <!-- //banner section -->
+
+<!-- EversteadInvest Christmas Lucky Wheel -->
+<section id="eversteadChristmasWheel" aria-labelledby="eversteadWheelTitle">
+  <style>
+    #eversteadChristmasWheel {
+      --ew-red: #d81b23;
+      --ew-green: #087443;
+      padding: 58px 16px;
+      background: linear-gradient(135deg, #fff8f0 0%, #f0f8ff 52%, #fff2f2 100%);
+      overflow: hidden;
+    }
+    #eversteadChristmasWheel .ew-wrap {
+      max-width: 1080px; margin: 0 auto; display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+      gap: 34px; align-items: center;
+    }
+    #eversteadChristmasWheel .ew-copy { text-align: left; }
+    #eversteadChristmasWheel .ew-kicker {
+      display: inline-block; padding: 7px 13px; border-radius: 30px;
+      color: #fff; background: var(--ew-green); font-size: 12px;
+      font-weight: 700; letter-spacing: 1px; margin-bottom: 14px;
+    }
+    #eversteadChristmasWheel h2 {
+      color: #172b3a; font-size: clamp(29px, 4vw, 43px);
+      line-height: 1.15; font-weight: 800; margin: 0 0 14px;
+    }
+    #eversteadChristmasWheel .ew-copy p {
+      color: #536273; font-size: 16px; line-height: 1.7; margin-bottom: 13px;
+    }
+    #eversteadChristmasWheel .ew-card {
+      background: #fff; border-radius: 22px; padding: 26px 22px;
+      box-shadow: 0 16px 45px rgba(30, 55, 75, .13); text-align: center;
+      border: 1px solid rgba(216, 27, 35, .10);
+    }
+    #eversteadChristmasWheel .ew-wheel-stage {
+      width: min(100%, 330px); aspect-ratio: 1; margin: 8px auto 20px;
+      position: relative; display: grid; place-items: center;
+    }
+    #eversteadChristmasWheel .ew-pointer {
+      position: absolute; z-index: 3; top: -5px; left: 50%;
+      transform: translateX(-50%); width: 0; height: 0;
+      border-left: 17px solid transparent; border-right: 17px solid transparent;
+      border-top: 32px solid #172b3a; filter: drop-shadow(0 2px 2px #999);
+    }
+    #eversteadChristmasWheel .ew-wheel {
+      width: 100%; height: 100%; border-radius: 50%;
+      border: 9px solid #fff; outline: 5px solid #d6a53a;
+      background: conic-gradient(
+        #d81b23 0deg 45deg, #087443 45deg 90deg,
+        #f2c14e 90deg 135deg, #164e83 135deg 180deg,
+        #d81b23 180deg 225deg, #087443 225deg 270deg,
+        #f2c14e 270deg 315deg, #164e83 315deg 360deg
+      );
+      box-shadow: 0 8px 22px rgba(0,0,0,.2);
+      transition: transform 5s cubic-bezier(.12,.75,.12,1);
+      position: relative;
+    }
+    #eversteadChristmasWheel .ew-wheel:before {
+      content: "🎄"; position: absolute; inset: 0; display: grid;
+      place-items: center; font-size: 42px; text-shadow: 0 2px 3px #555;
+    }
+    #eversteadChristmasWheel .ew-spin {
+      border: 0; border-radius: 30px; padding: 14px 30px;
+      background: linear-gradient(120deg, #d81b23, #f04b35);
+      color: #fff; font-weight: 800; font-size: 16px;
+      cursor: pointer; box-shadow: 0 7px 18px rgba(216,27,35,.25);
+      transition: transform .2s, opacity .2s;
+    }
+    #eversteadChristmasWheel .ew-spin:hover { transform: translateY(-2px); }
+    #eversteadChristmasWheel .ew-spin:disabled { opacity: .6; cursor: wait; }
+    #eversteadChristmasWheel .ew-result {
+      display: none; margin-top: 20px; padding: 17px 14px;
+      border-radius: 14px; background: #f0fbf4; border: 1px solid #b9e7c8;
+    }
+    #eversteadChristmasWheel .ew-result h3 {
+      color: #087443; font-size: 22px; margin: 0 0 5px;
+    }
+    #eversteadChristmasWheel .ew-prize {
+      color: #172b3a; font-size: 36px; font-weight: 900; margin: 4px 0 10px;
+    }
+    #eversteadChristmasWheel .ew-result p {
+      color: #536273; font-size: 13px; line-height: 1.5; margin-bottom: 13px;
+    }
+    #eversteadChristmasWheel .ew-whatsapp {
+      display: inline-block; padding: 12px 19px; border-radius: 25px;
+      background: #168b50; color: #fff !important; font-weight: 700;
+      text-decoration: none !important;
+    }
+    #eversteadChristmasWheel .ew-note {
+      color: #7a8792; font-size: 11px; line-height: 1.5; margin: 13px 0 0;
+    }
+    @media (max-width: 767px) {
+      #eversteadChristmasWheel { padding: 42px 14px; }
+      #eversteadChristmasWheel .ew-wrap { grid-template-columns: 1fr; gap: 24px; }
+      #eversteadChristmasWheel .ew-copy { text-align: center; }
+      #eversteadChristmasWheel .ew-card { padding: 22px 15px; }
+      #eversteadChristmasWheel .ew-wheel-stage { width: min(88vw, 310px); }
+    }
+  </style>
+
+  <div class="ew-wrap">
+    <div class="ew-copy">
+      <span class="ew-kicker">🎅 CHRISTMAS SPECIAL</span>
+      <h2 id="eversteadWheelTitle">Spin the Christmas Lucky Wheel!</h2>
+      <p>Celebrate the season with EversteadInvest. Give the wheel a spin and reveal your festive prize.</p>
+      <p>Every spin reveals a prize between <strong>$50 and $1,000</strong>. If you win, take a screenshot of your result and send it to our admin on WhatsApp to make a claim.</p>
+      <p>Good luck, and Merry Christmas! 🎁</p>
+    </div>
+
+    <div class="ew-card">
+      <div class="ew-wheel-stage">
+        <span class="ew-pointer" aria-hidden="true"></span>
+        <div class="ew-wheel" id="eversteadWheelDisc" role="img" aria-label="Christmas prize wheel"></div>
+      </div>
+      <button class="ew-spin" id="eversteadSpinButton" type="button">🎁 SPIN THE WHEEL</button>
+      <div class="ew-result" id="eversteadWheelResult" aria-live="polite">
+        <h3>🎉 Congratulations!</h3>
+        <div class="ew-prize" id="eversteadPrizeAmount">$0</div>
+        <p>Take a screenshot of this result, then contact our admin on WhatsApp to submit your claim.</p>
+        <a class="ew-whatsapp" id="eversteadWhatsAppClaim" href="#" target="_blank" rel="noopener noreferrer">Claim on WhatsApp</a>
+      </div>
+      <p class="ew-note">Prize results are generated in your browser and are subject to confirmation by the EversteadInvest admin. A screenshot is a claim reference, not confirmation of payment.</p>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const wheel = document.getElementById("eversteadWheelDisc");
+      const spinButton = document.getElementById("eversteadSpinButton");
+      const result = document.getElementById("eversteadWheelResult");
+      const prizeAmount = document.getElementById("eversteadPrizeAmount");
+      const claimLink = document.getElementById("eversteadWhatsAppClaim");
+
+      if (!wheel || !spinButton || !result || !prizeAmount || !claimLink) return;
+
+      let hasSpun = false;
+      let currentRotation = 0;
+
+      spinButton.addEventListener("click", function () {
+        if (hasSpun) return;
+
+        hasSpun = true;
+        spinButton.disabled = true;
+        spinButton.textContent = "GOOD LUCK! 🎄";
+        result.style.display = "none";
+
+        const prize = Math.floor(Math.random() * 951) + 50;
+        const extraRotation = (5 + Math.floor(Math.random() * 4)) * 360
+          + Math.floor(Math.random() * 360);
+        currentRotation += extraRotation;
+        wheel.style.transform = "rotate(" + currentRotation + "deg)";
+
+        window.setTimeout(function () {
+          const formattedPrize = "$" + prize.toLocaleString("en-US");
+          prizeAmount.textContent = formattedPrize;
+          const message = "Hello EversteadInvest Admin, I played the Christmas Lucky Wheel and my displayed prize is "
+            + formattedPrize
+            + ". I have attached a screenshot of my result. Please guide me on the claim process.";
+          claimLink.href = "https://wa.me/447347630339?text=" + encodeURIComponent(message);
+          result.style.display = "block";
+          spinButton.textContent = "YOU HAVE PLAYED 🎁";
+          result.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }, 5100);
+      });
+    })();
+  </script>
+</section>
+<!-- End EversteadInvest Christmas Lucky Wheel -->
+
 <div style="margin: 8px auto; display: block; text-align:center;">
   <!---728x90--->
 </div>
